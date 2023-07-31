@@ -459,7 +459,7 @@ function checkServerStatus() {
 }
 
 // Call the checkServerStatus function after a certain interval
-setInterval(checkServerStatus, offlineTimeout);
+setInterval(checkServerStatus, 5000);
 
 
 
