@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <link rel="icon" href="https://www.inclo.net/images/favicons/favicon-orange_alt.ico" type="image/x-icon">
+   <title>TalkBridge</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <!-- Font Awesome File -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href="/css/index">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+   <div class="container app">
+      <div class="row app-one">
+         <div class="col-sm-4 side" id="sideL">
+            <div class="side-one">
+               <!-- Heading -->
+               <div class="row heading">
+                  <div class="col-sm-3 col-xs-3 heading-avatar">
+                     <div class="heading-avatar-icon">
+                        <img src="https://wallpapers.com/images/hd/cool-neon-blue-profile-picture-u9y9ydo971k9mdcf.jpg">
+                     </div>
+                  </div>
+                  <div class="col-sm-1 col-xs-1  heading-dot  pull-right">
+                     <i class="fa fa-users pull-right"></i> <!--onclick="makegroup();"-->
+                  </div>
+                  <div class="col-sm-2 col-xs-2 heading-compose  pull-right">
+                     <i class="fa fa-comments fa-2x  pull-right" aria-hidden="true"></i>
+                  </div>
+               </div>
+               <!-- Heading End -->
+               <!-- SearchBox -->
+               <div class="row searchBox">
+                  <div class="col-sm-12 searchBox-inner">
+                     <div class="form-group has-feedback">
+                        <input id="searchText" type="text" class="form-control" name="searchText"
+                           placeholder="Add Friends.." list="dataList">
+                        <datalist id="dataList"></datalist>
+                        <span class="glyphicon glyphicon-search form-control-feedback" onclick="addFriend();"
+                           style="cursor: pointer;pointer-events: all;"></span>
+                     </div>
+                  </div>
+               </div>
+               <!-- Search Box End -->
+               <!-- sideBar -->
+               <div class="row sideBar" id="usersList">
+
+               </div>
+            </div>
+            <!-- Sidebar End -->
+         </div>
+         <!-- New Message Sidebar End -->
+         <!-- Conversation Start -->
+         <div class="col-sm-8 conversation">
+            <!-- Heading -->
+            <div class="row heading">
+               <div class="col-sm-2 col-md-1 col-xs-3 heading-avatar">
+                  <div class="heading-avatar-icon">
+                     <img
+                        src="https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg?cs=srgb&dl=pexels-suliman-sallehi-1704488.jpg&fm=jpg">
+                  </div>
+               </div>
+               <div class="col-sm-8 col-xs-7 heading-name">
+                  <a class="heading-name-meta" id="recieverName"></a>
+                  <span class="heading-online" id="recieverStatus"></span>
+               </div>
+               <div class="col-sm-1 col-xs-1  heading-dot pull-right">
+                  <i class="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>
+               </div>
+            </div>
+            <!-- Heading End -->
+            <!-- Message Box -->
+            <button id="loadMoreBtn" onclick="loadMoreRequest()">Load More Messages</button>
+
+            <div class="row message" id="conversation">
+               <div class="row message-previous" id="message-previous">
+                     <div class="col-sm-12 previous">
+                     </div>
+               </div>
+            </div>
+            <!-- Message Box End -->
+            <!-- Reply Box -->
+            <div class="row reply">
+               <div class="col-sm-1 col-xs-1 reply-emojis">
+                  <i class="fa fa-smile-o fa-2x"></i>
+               </div>
+               <div class="col-sm-9 col-xs-9 reply-main">
+                  <textarea id="input" class="form-control" rows="1" id="comment" required
+                     placeholder="Aa..."></textarea>
+               </div>
+               <div class="col-sm-1 col-xs-1 reply-recording">
+                  <i class="fa fa-microphone fa-2x" aria-hidden="true"></i>
+               </div>
+               <div class="col-sm-1 col-xs-1 reply-send" id="send">
+                  <i class="fa fa-send fa-2x" aria-hidden="true"></i>
+               </div>
+            </div>
+            <!-- Reply Box End -->
+         </div>
+         <!-- Conversation End -->
+      </div>
+      <!-- App One End -->
+   </div>
+
+   <script>
+      $(".heading-compose").click(function () {
+         $(".side-two").css({
+            "left": "0"
+         });
+      });
+
+      $(".newMessage-back").click(function () {
+         $(".side-two").css({
+            "left": "-100%"
+         });
+      });
+   </script>
+   <script src="/socket.io/socket.io.js"></script>
+   <script src="/js/index"></script>
+</body>
+
+</html>
