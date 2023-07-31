@@ -15,9 +15,11 @@ let loadedMessagesCount = 50                                         //    Messa
 let loadMessageBtn = document.getElementById("loadMoreBtn")          //    Load Messages Button
 let firstMsgIdOfConversation                                         //    First Message id of current conversation
 let notificationMaxBody = 40                                         //    This will cut and make the notification body dottet at the end
+let serverOnline = true                                              //    Server status
 
 // connect code
 socket.on("connect", () => {
+   serverOnline = true
    // if not logged in, go to login
    if (localStorage.getItem("uid") && localStorage.getItem("username") && localStorage.getItem("id")) {
       // request an update for the socketId
@@ -30,6 +32,12 @@ socket.on("connect", () => {
       localStorage.setItem("uid", socketID);
    })
 });
+
+// disconnect code
+socket.on('disconnect', () => {
+  serverOnline = false
+});
+
 // request and receive contact list
 socket.emit("give me contact list", localStorage.getItem("id"));
 
@@ -441,6 +449,21 @@ async function requestNotificationPermission(){
       console.error("Error while requesting notification permission:", error);
    }
 }
+
+// Function to check server status after a certain interval
+function checkServerStatus() {
+  if (!serverOnline) {
+    alert('Server is offline.');
+    // Perform actions when the server is offline
+  }
+}
+
+// Call the checkServerStatus function after a certain interval
+setInterval(checkServerStatus, offlineTimeout);
+
+
+
+
 
 //Groups (Future Update)
 
