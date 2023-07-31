@@ -15,7 +15,7 @@ let loadedMessagesCount = 50                                         //    Messa
 let loadMessageBtn = document.getElementById("loadMoreBtn")          //    Load Messages Button
 let firstMsgIdOfConversation                                         //    First Message id of current conversation
 let notificationMaxBody = 40                                         //    This will cut and make the notification body dottet at the end
-let serverOnline = true                                              //    Server status
+let serverOnline = false                                             //    Server status
 
 // connect code
 socket.on("connect", () => {
